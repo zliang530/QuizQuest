@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <%- include("../components/head.ejs"); %>
+</head>
+
+<body>
+
+  <%- include("../components/navbar.ejs"); %>
+
+  <main role="main" class="container">
+
+    <div class="jumbotron bg-dark text-light shadow">
+
+      <h1><%= statusCode %> error</h1>
+
+      <p class="lead"><%= msg %>. Please try something else.</p>
+
+    </div>
+
+  </main>
+
+  <%- include("../components/footer.ejs"); %>
+
+</body>
+
+</html>

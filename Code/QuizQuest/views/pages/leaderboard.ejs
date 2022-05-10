@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <%- include("../components/head.ejs"); %>
+</head>
+
+<style>
+  .username {
+    color: hsl(228, 54%, 80%);
+    text-shadow: black 0px 0px 0px !important;
+  }
+
+  .quiz-score-total {
+    color: hsla(208, 100%, 97%, 0.65) !important;
+  }
+
+  .quiz-card {
+    border-width: 0 0px 0px 3px !important;
+    /* border-radius: 0% !important; */
+    transition: background-color .10s !important;
+  }
+
+  .quiz-card.active {
+    border-width: 0 0px 0px 3px !important;
+    /* border-radius: 0% !important; */
+    border-color: transparent;
+    transition: background-color .10s !important;
+    border-image: linear-gradient(180deg, #B8574E, #E89B26) 3;
+    border-radius: 0px !important
+  }
+
+  .quiz-card:hover {
+    background-color: hsl(0, 0%, 18%);
+    border-image: linear-gradient(180deg, #6bb0c3, #b0bbe8) 3;
+    transition: background-color .15s !important;
+
+    /* top | right | bottom | left */
+    border-width: 0px 0px 0px 3px !important;
+  }
+
+  .quiz-card:active {
+    background-color: hsl(0, 0%, 18%);
+  }
+
+  .quiz-card:focus {
+    background-color: hsl(0, 0%, 18%);
+  }
+</style>
+
+<body>
+
+  <%- include("../components/navbar.ejs"); %>
+
+  <main role="main" class="container">
+
+    <div class="jumbotron bg-dark text-light shadow pt-6  ">
+
+      <h1 class="text-center">Global Leaderboard</h1>
+
+      <% if (users.length > 0) { %>
+        <div class="dropdown text-center pb-4">
+          <button id="category_select" class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <% if (sort == 1) { %>
+              Overall Score
+            <% } else { %>
+              Quizzes Complete
+            <% } %>
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <% if (sort == 1) { %>
+              <a class="dropdown-item" href="/leaderboard/completed">Quizzes Complete</a>
+              <% } else { %>
+                <a class="dropdown-item" href="/leaderboard/score">Overall Score</a>
+              <% } %>
+          </div>
+        </div>
+
+        <ul class="list-group shadow">
+          <% users.forEach((current_user, index) => { %>
+
+            <% if (user) { %>
+              <a href="/user/<%= current_user.user_id %>" class="mb-1 quiz-card list-group-item list-group-item-action <%=user.user_id!==current_user.user_id?"":"active"%>">
+            <% } else { %>
+              <a href="/user/<%= current_user.user_id %>" class="mb-1 quiz-card list-group-item list-group-item-action">
+            <% } %>
+              <div class="justify-content-between">
+                <span class="float-left quiz-score-total mt-2 mb-2"><%= index+1 %></span>
+                <span class="h5 float-left username ml-4 mt-2 mb-2"><%= current_user.username %></span>
+
+                <% if (current_user.score !== undefined) { %>
+                  <span class="float-right quiz-score-total mt-2 mb-2"><%= (current_user.score).toLocaleString() %> pts</span>
+                <% } else { %>
+                  <span class="float-right quiz-score-total mt-2 mb-2"><%= (current_user.quizzes_completed).toLocaleString() %> <%=  current_user.quizzes_completed == 1 ? "quiz" : "quizzes" %></span>
+                <% } %>
+              </div>
+            </a>
+
+          <% }) %>
+        </ul>
+      <% } else { %>
+        <p class="mt-4 text-muted text-center mb-0">No users have completed any quizzes. <a href="/sign_up">Be the first?</a></p>
+      <% } %>
+    </div>
+
+  </main>
+
+  <%- include("../components/footer.ejs"); %>
+
+</body>
+
+</html>

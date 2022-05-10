@@ -1,0 +1,111 @@
+quiz_id;question;point_total
+1;What was the Willis Tower known as until 2009?;5
+1;When did construction on the Willis Tower conclude?;25
+1;How many floors tall is the Willis Tower?;25
+1;The Willis Tower is part of which architectural movement?;50
+1;Who was the principal architect responsible for the Willis Tower's design?;100
+6;When did the Chicago Theatre first open?;5
+6;Which one of these is NOT presently a common event held at the Chicago Theatre?;25
+6;What is the most distinctive feature of the Chicago Theatre?;5
+6;What is the main architectural influence on the theatre's interior design?;50
+6;In what year was the Chicago Theatre listed as a Chicago Landmark?;100
+7;How tall is the Great Wall of China?;50
+7;Which materials were used to construct the Great Wall of China?;50
+7;Why was the Great Wall of China built?;50
+7;When did construction on the Great Wall of China begin?;25
+7;How long is the Great Wall of China?;25
+8;What is Chichen Itza?;5
+8;Which civilization established Chichen Itza?;25
+8;How many ball courts does Chichen Itza have?;25
+8;How tall is the Temple of Kukulcán (El Castillo)?;50
+8;Who was the first Spanish explorer to attempt to conquer Chichen Itza?;100
+9;Why was the Eiffel Tower built?;25
+9;How tall is the Eiffel Tower?;5
+9;When did construction on the Eiffel Tower take place?;50
+9;Why were architects against the construction of the Eiffel Tower?;100
+9;From who does the Eiffel Tower get its name?;5
+10;Bora Bora was initially called 'Pora Pora'. What does 'Pora Pora' mean?;25
+10;Which country used the island as a military base during World War II?;25
+10;What industry primarly drives the island's economy?;50
+10;Which country conquered the island?;50
+10;Bora Bora is part of which country?;50
+11;How tall is the Great Pyramid of Giza?;25
+11;Why was the Great Pyramid of Giza built?;50
+11;What is the Great Pyramid of Giza made out of?;50
+11;How many Pyramids of Giza are there?;5
+11;What is the widely accepted theory on how the pyramid was built?;50
+12;How tall is the Leaning Tower of Pisa?;10
+12;When was the Leaning Tower of Pisa built?;25
+12;Why was the Leaning Tower of Pisa built?;50
+12;How did Pisa fund construction of the tower?;50
+12;What is Tower of Pisa made of?;25
+13;How was Niagara Falls built?;50
+13;How tall is Niagara Falls?;25
+13;Why does Niagara Falls' water appear a distinct shade of green?;50
+13;What is one way the water is NOT being utilized for?;50
+13;How many tourists vist Niagara Falls each year?;25
+14;Which of the following is true about Yellowstone?;50
+14;How often does the Old Faithful Geyser erupt?;25
+14;Across how many states does Yellowstone span?;25
+14;How man geysers exist within Yellowstone?;25
+14;Which of the following animals are NOT found within Yellowstone?;25
+15;What is Tokyo Tower officially named?;10
+15;Between what years was the Tokyo Tower built?;25
+15;Why was the Tokyo Tower built?;50
+15;How tall is the Tokyo Tower?;50
+15;How often is the Tokyo Tower repainted and how long does it take?;50
+16;Where is Branley Castle located?;10
+16;What kind of garden can be found surrounding the castle?;25
+16;Why do people kiss the Blarney Stone?;50
+16;When was the castle originally built?;50
+16;Which family was the first to take control of the Castle?;50
+17;In what year was Machu Picchu abandoned?;25
+17;Which civilization established Machu Picchu?;10
+17;In what year were the ruins of Machu Picchu first documented by Western archeologists?;100
+17;Why was Machu Picchu abandoned?;50
+17;Where is Machu Picchu located?;10
+18;When did construction on the Colosseum conclude?;10
+18;What is the Colosseum's original Latin name?;100
+18;What is the Colosseum primarily made out of?;10
+18;Why did the Colosseum fall into disrepair?;50
+18;How many spectators could the Colosseum hold at max capacity?;50
+4;How many people visit the Art Institute annually?;10
+4;When did the Art Institute first open?;10
+4;How many works of art are in the Art Institute's collection?;25
+4;How many curatorial departments does the Art Institute have?;50
+4;Which architectural was the Art Institute built in?;100
+3;Who sculpted Cloud Gate?;50
+3;What is Cloud Gate nicknamed?;5
+3;When was Cloud Gate first unveiled?;10
+3;What inspired Cloud Gate's design?;100
+3;What is Cloud Gate constructed out of?;25
+2;How many colleges does UIC have?;10
+2;What architectural style does UIC's East Campus primarily exhibit?;50
+2;What is the name of UIC's mascot?;5
+2;Which NCAA athletic conference is UIC a member of?;25
+2;When did UIC's East and West Campuses consolidate into a single university?;100
+5;Which Chicago university previously held classes at Navy Pier?;100
+5;Where does Navy Pier get it's name?;50
+5;When did Navy Pier originally open?;10
+5;What was Navy Pier's original purpose?;25
+5;How many people visit Navy Pier annually?;5
+19;How many people visit Stonehenge each year?;25
+19;How old is the Stonehenge?;50
+19;What is a popular modern theory for the creation of the Stonehenge?;25
+19;How many stones are visible in the Stonehenge?;50
+19;How tall is the tallest stone at Stonehenge?;25
+20;How big is Glacier National Park?;50
+20;When was Glacier National Park established?;25
+20;What spiritual nickname does the Blackfeet Indians call Glacier National Park by?;50
+20;What of the following is NOT true about the Glacier National Park today?;50
+20;How many glaciers are in Glacier National Park?;25
+21;Approximately how long is the reef?;25
+21;Where is the great barrier reef located?;10
+21;At what depth can the corals grow in the water?;25
+21;Why is the barrier reef dying?;25
+21;About how much money does the reef make in tourism?;100
+22;Raja Ampat forms part of the ______?;50
+22;Raja Ampat contains about ______ of all Hard Coral Species in the world?;50
+22;The first recorded sightings of the archipelago was made by which explorer?;50
+22;Where does the name Raja Ampat come from?;25
+22;What does Raja Ampat mean?;25

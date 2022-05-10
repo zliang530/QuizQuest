@@ -1,0 +1,23 @@
+latitude;longitude;name;img
+41.8789;-87.6358;Willis Tower;https://upload.wikimedia.org/wikipedia/commons/0/02/Willis_Tower_From_Lake.jpg
+41.871667;-87.649167;University of Illinois at Chicago;https://upload.wikimedia.org/wikipedia/commons/2/2c/Catalog_%281963%29_%2814592057920%29.jpg
+41.882686;-87.623325;Cloud Gate;https://upload.wikimedia.org/wikipedia/commons/9/9f/Cloud_Gate_sculpture.jpeg
+41.879444;-87.623889;Art Institute of Chicago;https://upload.wikimedia.org/wikipedia/commons/7/70/Art_Institute_of_Chicago_Lion_Statue_%282-D%29.jpg
+41.891389;-87.599722;Navy Pier;https://upload.wikimedia.org/wikipedia/commons/0/02/Navy_Pier_1190x1585.jpg
+41.885278;-87.627778;Chicago Theatre;https://upload.wikimedia.org/wikipedia/commons/b/b9/Chicago_Theatre_2019.jpg
+40.68;117.23;Great Wall of China;https://upload.wikimedia.org/wikipedia/commons/2/23/The_Great_Wall_of_China_at_Jinshanling-edit.jpg
+20.683056;-88.568611;Chichen Itza;https://upload.wikimedia.org/wikipedia/commons/5/51/Chichen_Itza_3.jpg
+48.858222;2.2945;Eiffel Tower;https://upload.wikimedia.org/wikipedia/commons/a/a8/Tour_Eiffel_Wikimedia_Commons.jpg
+-16.501;-151.74;Bora-Bora Island;https://upload.wikimedia.org/wikipedia/commons/c/c4/DL2A_Four_Seasons_Bora_Bora_20.jpg
+29.979167;31.134167;Great Pyramid of Giza;https://upload.wikimedia.org/wikipedia/commons/e/e3/Kheops-Pyramid.jpg
+43.723056;10.396389;Leaning Tower of Pisa;https://upload.wikimedia.org/wikipedia/commons/6/66/The_Leaning_Tower_of_Pisa_SB.jpeg
+43.10012;-79.06627;Niagara Falls;https://upload.wikimedia.org/wikipedia/commons/a/ab/3Falls_Niagara.jpg
+44.423691;-110.588516;Yellowstone National Park;https://upload.wikimedia.org/wikipedia/commons/c/c9/YellowstonefallJUN05.JPG
+35.658611;139.745556;Tokyo Tower;https://upload.wikimedia.org/wikipedia/commons/3/37/TaroTokyo20110213-TokyoTower-01.jpg
+51.9289;-8.5708;Blarney Castle;https://upload.wikimedia.org/wikipedia/commons/7/73/Blarney_Castle_Ireland.jpg
+-13.163333;-72.545556;Machu Picchu;https://upload.wikimedia.org/wikipedia/commons/e/eb/Machu_Picchu%2C_Peru.jpg
+41.8902;12.4924;Colosseum;https://upload.wikimedia.org/wikipedia/commons/d/de/Colosseo_2020.jpg
+51.174;-1.8224;Stonehenge;https://upload.wikimedia.org/wikipedia/commons/3/3c/Stonehenge2007_07_30.jpg
+48.696667;-113.718333;Glacier National Park;https://upload.wikimedia.org/wikipedia/commons/5/51/Mountain_Goat_at_Hidden_Lake.jpg
+-18.283333;147.7;The Great Barrier Reef;https://upload.wikimedia.org/wikipedia/commons/7/75/Arlington-Reef-2018-aerial-view-Luka-Peternel.jpg
+-0.2333324;130.5166646;Raja Ampat;https://upload.wikimedia.org/wikipedia/commons/4/44/Sunrise.raja_ampat.jpg

@@ -1,0 +1,3 @@
+python update_quizquest_db.py
+
+Ensure that you follow the format specified in the header of the csv file and seperate each filed with a ";"

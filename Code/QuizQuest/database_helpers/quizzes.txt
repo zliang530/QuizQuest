@@ -1,0 +1,23 @@
+location_id,description
+1;How well do you know the Willis Tower?
+2;Chicago's public research university
+3;Millennium Park's centerpiece sculpture
+4;The second largest art museum in the United States
+5;Chicago's number one tourist attraction
+6;Chicago's famous theatre
+7;The 10,000-li Long Wall
+8;At the mouth of the well of the Itza
+9;Eiffel Tower
+10;Bora-Bora
+11;Great Pyramid of Giza
+12;Leaning Tower of Pisa
+13;Niagara Falls
+14;The world's largest concentration of geysers and geothermal features
+15;The Tokyo skyline's defining landmark
+16;Ireland's mythical medieval stronghold
+17;An untouched city hidden in the Andes
+18;A lasting symbol of ancient Rome
+19;Stonehenge
+20;Crown of the Continent
+21;Under the Sea the Great Barrier Reef
+22;Raja Ampat Islands

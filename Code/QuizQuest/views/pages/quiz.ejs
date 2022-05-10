@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <%- include("../components/head.ejs"); %>
+
+  <style>
+    #quiz_img {
+      max-height: 500px !important;
+    }
+
+    .card-text {
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <%- include("../components/navbar.ejs"); %>
+
+  <!-- Base Quiz HTML -->
+  <main role="main" class="container">
+
+    <div id="quiz_jumbotron" class="jumbotron bg-dark text-light shadow pt-6  ">
+      <h1 id="quiz_title" class="text-center mb-4"><%= quizTitle %></h1>
+      <img id="quiz_img" class="mx-auto d-block img-fluid shadow rounded m-4" src="<%= imageSource %>" alt="An image of the <%= quizTitle %>"></img>
+
+      <div id="quiz_description" class="text-center h5 mb-4"><%= quizDesc %></div>
+
+      <div class="container-fluid">
+        <div id="nearby-locations" class="row justify-content-center">
+        </div>
+      </div>
+
+      <div id="gameplay_buttons" class="mb-2 mt-2">
+        <div id="start_quiz" class="btn btn-primary btn-lg btn-block" role="button" onclick="start_quiz()">
+          Take quiz
+        </div>
+
+        <a id="choose_another" class="btn btn-outline-primary btn-lg btn-block" href="/map" role="button">
+          Choose another location
+        </a>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- Inline JavaScript -->
+  <script>
+    const quiz_id = ((window.location.href).split("/").slice(-1)[0].split("").filter(elem => elem.match(/[0-9]/g))).join("");
+
+    let questions;
+    let current_question;
+    let current_score = 0;
+    let player_score = 0;
+
+    function clear_jumbotron(new_quiz = false) {
+        if (new_quiz) {
+            document.getElementById("quiz_title").innerText = "";
+            document.getElementById("quiz_img").remove();
+            document.getElementById("quiz_description").innerText = "";
+        }
+
+        document.getElementById("gameplay_buttons").innerHTML = "";
+    }
+
+    // Fisher–Yates shuffle
+    function shuffle(array) {
+        let counter = array.length;
+
+        while (counter > 0) {
+            const index = Math.floor(Math.random() * counter);
+            --counter;
+
+            const temp = array[counter];
+            array[counter] = array[index];
+            array[index] = temp;
+        }
+
+        return array;
+    }
+
+    function populate_answers(answers) {
+        const buttons = new Array(4);
+
+        answers.forEach((current_answer, index) => {
+            const { answer_id, answer } = current_answer;
+            const button = `<button id="answer-${index + 1}" onclick="check_answer(${answer_id})" class="btn btn-primary btn-lg btn-block gameplay-button" role="button">${answer}</button>`;
+            buttons[index] = button;
+        });
+
+        // Avoid unecessary reflows
+        document.getElementById("gameplay_buttons").innerHTML = (buttons.join(""));
+    }
+
+    async function retrieve_answers(question_id) {
+        const data = await fetch(`/api/questions/answers/${question_id}`);
+        const answers = shuffle(await data.json());
+
+        populate_answers(answers);
+    }
+
+    function create_question() {
+        const { question_id, question, point_total } = questions.pop();
+        current_question = question_id;
+
+        current_score = point_total;
+
+        document.getElementById("quiz_title").innerText = question;
+        document.getElementById("quiz_description").innerText = `${point_total} points`;
+
+        retrieve_answers(question_id);
+    }
+
+    async function complete_quiz() {
+        let nearby_quizzes = await fetch(`/api/quiz/${quiz_id}/nearby/`);
+        nearby_quizzes = await (nearby_quizzes.json());
+
+        clear_jumbotron();
+
+        document.getElementById("quiz_title").innerText = "Quiz complete";
+        document.getElementById("quiz_description").innerText = `You've earned ${player_score} points`;
+
+        let quiz_cards = [];
+
+        if (nearby_quizzes.length > 0) {
+            for (const quiz of nearby_quizzes) {
+                const { name, img, description } = quiz;
+                const current_id = quiz.quiz_id;
+
+                const quiz_card = `<div class="col-auto">
+                                    <div class="card bg-dark text-light border shadow mt-2 mr-2 ml-2 mb-4">
+                                      <img src="${img}" class="card-img-top card-image" alt="An image of the ${name}">
+                                      <div class="card-body text-center">
+                                      <a href="/quiz/${current_id}" class="h5 card-title">${name}</a>
+                                      <p class="card-text text-center">${description}</p></div>
+                                    </div>
+                                  </div>`;
+
+                quiz_cards.push(quiz_card);
+            }
+        }
+
+        document.getElementById("nearby-locations").innerHTML = quiz_cards.join("");
+        document.getElementById("gameplay_buttons").innerHTML += "<a class=\"btn btn-primary btn-lg btn-block\" role=\"button\" href=\"/map\">Take another?</a>";
+    }
+
+    async function next_question() {
+        if (questions.length > 0) {
+            clear_jumbotron();
+            create_question();
+        }
+        else {
+            await fetch(`/api/quizzes/${quiz_id}`, { method: "POST" });
+            complete_quiz();
+        }
+    }
+
+    async function check_answer(answer_id) {
+        await fetch(`/api/answers/${answer_id}`);
+
+        fetch(`/api/questions/answer/${current_question}`).then(data => data.json()).then(res => {
+            for (const button of document.getElementsByClassName("gameplay-button")) {
+                if (((button.onclick).toString()).search(res.answer_id) != -1) {
+                    button.style.backgroundColor = "seagreen";
+                }
+                else if (((button.onclick).toString()).search(answer_id) != -1) {
+                    button.style.backgroundColor = "indianred";
+                }
+                else {
+                    button.style.opacity = 0.7;
+                }
+
+                // Disable further input
+                button.disabled = true;
+                button.removeAttribute("onclick");
+            }
+
+            // Show "next question" button
+            document.getElementById("gameplay_buttons").innerHTML += "<button id='next_question' onclick='next_question()' class='btn btn-primary btn-lg btn-block' role='button'>Next question</button>";
+
+            if (answer_id === res.answer_id) {
+                player_score += current_score;
+            }
+        });
+    }
+
+    async function start_quiz() {
+        clear_jumbotron(true);
+        const data = await fetch(`/api/quizzes/questions/${quiz_id}`);
+        questions = shuffle(await data.json());
+
+        create_question();
+
+        // Allow quizzes to be played with keyboard
+        document.addEventListener("keydown", event => {
+            switch (event.code) {
+            case "Digit1" :
+                document.getElementById("answer-1").click();
+                break;
+            case "Digit2" :
+                document.getElementById("answer-2").click();
+                break;
+            case "Digit3" :
+                document.getElementById("answer-3").click();
+                break;
+            case "Digit4" :
+                document.getElementById("answer-4").click();
+                break;
+            case "Enter" :
+                try { document.getElementById("next_question").click(); }
+                catch (error) { return error; }
+                break;
+            default :
+                break;
+            }
+        });
+    }
+  </script>
+
+  <%- include("../components/footer.ejs"); %>
+</body>
+</html>

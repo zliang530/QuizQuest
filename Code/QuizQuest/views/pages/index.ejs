@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <%- include("../components/head.ejs"); %>
+</head>
+
+<style>
+
+  #lead-jumbotron {
+    background-image: url(https://i.imgur.com/feIsAAM.jpg);
+    background-attachment: fixed;
+    background-size: cover;
+    border-radius: 0px;
+    min-height: calc(100vh - 64px);
+  }
+
+  #attention {
+    /* background: rgb(0,0,0); */
+    /* background: radial-gradient(circle, rgba(0,0,0,0.90) 0%, rgba(0,0,0,0.6) 50%, rgba(0,212,255,0) 100%); */
+
+    background: rgb(0,0,0);
+    background: radial-gradient(circle, rgba(0,0,0,0.7990546560421043) 0%, rgba(0,0,0,0.3984944319524685) 50%, rgba(0,0,0,0) 100%);
+    background: radial-gradient(circle, rgba(0,0,0,0.90) 0%, rgba(0,0,0,0.45) 50%, rgba(0,0,0,0) 100%);
+
+    border-radius: 0px !important;
+    min-height: calc(100vh - 64px);
+  }
+</style>
+
+<body>
+
+  <%- include("../components/navbar.ejs"); %>
+
+  <div id="lead-jumbotron" class="jumbotron jumbotron-fluid bg-dark text-light shadow p-0 mb-0">
+    <div id="attention" class="p-5 text-center align-middle">
+      <div style="padding-top: 25vh" class="text-center justify-content-center align-self-center">
+        <h1 style="font-family: Poppins, sans-serif;">QuizQuest</h1>
+
+        <p class="lead">A location based quiz game</p>
+        <a class="btn btn-lg btn-primary m-1" href="/map" role="button">Play</a>
+
+        <% if (locals.user !== undefined) { %>
+          <a class="btn btn-lg btn btn-outline-primary m-1" href="/quiz" role="button">Browse</a>
+        <% } else { %>
+          <a class="btn btn-lg btn btn-outline-primary m-1" href="/sign_up" role="button">Sign-up</a>
+        <% } %>
+      </div>
+    </div>
+  </div>
+
+  <!-- <main role="main" class="container"> -->
+
+    <!-- <div class="row">
+      <div class="jumbotron shadow bg-dark text-light col-md m-3">
+        <h3 class="h2">Leaderboards</h3>
+        <p class="text-muted">Compete for the highest score!</p>
+      </div>
+
+      <div class="jumbotron shadow bg-dark text-light col-md m-3">
+        <h3 class="h2">Community</h3>
+        <p class="text-muted">Contribute to QuizQuest by submitting your own quizzes!</p>
+      </div>
+    </div> -->
+
+  <!-- </main> -->
+
+  <%- include("../components/footer.ejs"); %>
+
+</body>
+
+</html>

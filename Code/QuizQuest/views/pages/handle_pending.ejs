@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<%- include("../components/head.ejs"); %>
+
+	<style>
+		.card {
+			border: 0px;
+		}
+
+		.quiz {
+			background-color: hsl(0, 0%, 21%) !important;
+		}
+
+		.question {
+			background-color: hsl(0, 0%, 21%) !important;
+		}
+	</style>
+</head>
+
+
+
+<body>
+
+	<%- include("../components/navbar.ejs"); %>
+
+	<main role="main" class="container text-center">
+		<div id="submit-quiz-format" class="jumbotron bg-dark text-light shadow">
+
+			<h1 class="h1 mb-4"><%= pending_quiz.name %></h1>
+
+			<div id="metadata" class="card metadata shadow" style="width: 100%">
+				<div class="h4 card-header">Metadata</div>
+
+				<div class="quiz pl-4 pr-4 pt-2 pb-4 mb-0 rounded-top">
+					<div class="form-group mt-4">
+						<input type="text" class="form-control form-control-lg" id="location-name" autofocus  maxlength="48"
+							required placeholder="Location name" value="<%= pending_quiz.name %>">
+					</div>
+
+					<div class="form-group">
+						<input required type="text" class="form-control" id="location-image" value="<%= pending_quiz.img %>" placeholder="Location image">
+					</div>
+
+					<div id="coordinates-form" class="form-group row text-center rounded-bottom mb-0">
+						<div class="col">
+							<input required id="latitude" value="<%= pending_quiz.latitude %>" type="text" class="form-control" placeholder="Latitude">
+						</div>
+						<div class="col">
+							<input required id="longitude" value="<%= pending_quiz.longitude %>" type="text" class="form-control" placeholder="Longitude">
+						</div>
+					</div>
+				</div>
+
+				<div class="quiz pl-4 pr-4 pt-2 pb-4 mb-2 mt-0">
+					<div class="form-group mb-0">
+						<textarea type="text" class="form-control" id="quiz-desc" maxlength="160" placeholder="Quiz description"><%= pending_quiz.description %></textarea>
+					</div>
+				</div>
+
+			</div>
+
+			<div class="questions mt-4" id="questions-container" title="<%= pending_quiz.questions.length %>">
+
+            <% pending_quiz.questions.forEach((question, index) => { %>
+				<div class="card mb-4" style="width: 100%;">
+					<div class="h4 card-header">Question <%= index + 1  %> </div>
+
+					<div class="question question-odd pl-4 pr-4 pt-2 pb-4 rounded">
+
+						<div class="form-group">
+							<textarea placeholder="Question prompt" class="form-control mt-3 mb-4" id="question-<%= index + 1 %>"  maxlength="160" rows="2"><%= question.question %> </textarea>
+						</div>
+
+						<div class="row mt-2">
+							<div class="col">
+								<input id="answer-<%= ((index) * 4) + 1 %>" type="text" class="form-control" value="<%= question.answers[0].answer %>" placeholder="Answer 1">
+							</div>
+							<div class="col">
+								<input id="answer-<%= ((index) * 4) + 2 %>" type="text" class="form-control" value="<%= question.answers[1].answer %>" placeholder="Answer 2">
+							</div>
+						</div>
+						<div class="row mt-2">
+							<div class="col">
+								<input id="answer-<%= ((index) * 4) + 3 %>" type="text" class="form-control" value="<%= question.answers[2].answer %>" placeholder="Answer 3">
+							</div>
+							<div class="col">
+								<input id="answer-<%= ((index) * 4) + 4 %>" type="text" class="form-control" value="<%= question.answers[3].answer %>" placeholder="Answer 4">
+							</div>
+						</div>
+
+						<div class="row mt-4">
+							<div class="col">
+								<select id="correct-<%= index + 1 %>" class="custom-select" required>
+									<option selected disabled>Correct answer</option>
+									<% if (question.answers[0].correct == 1) { %>
+										<option selected>1</option>
+										<option>2</option>
+										<option>3</option>
+										<option>4</option>
+									<% } else if (question.answers[1].correct == 1) { %>
+										<option>1</option>
+										<option selected>2</option>
+										<option>3</option>
+										<option>4</option>
+									<% } else if (question.answers[2].correct == 1) {%>
+										<option>1</option>
+										<option>2</option>
+										<option selected>3</option>
+										<option>4</option>
+									<% } else if (question.answers[3].correct == 1) {%>
+										<option>1</option>
+										<option>2</option>
+										<option>3</option>
+										<option selected>4</option>
+									<% } else { %>
+										<option>1</option>
+										<option>2</option>
+										<option>3</option>
+										<option>4</option>
+									<% } %>
+								</select>
+							</div>
+							<div class="col">
+								<select id="point-<%= index + 1 %>" class="custom-select" required>
+									<option selected disabled>Point total</option>
+									<% if (question.point_total == 5) { %>
+										<option selected>5</option>
+										<option>10</option>
+										<option>25</option>
+										<option>50</option>
+									<% } else if (question.point_total == 10) { %>
+										<option>5</option>
+										<option selected>10</option>
+										<option>25</option>
+										<option>50</option>
+									<% } else if (question.point_total == 25) {%>
+										<option>5</option>
+										<option>10</option>
+										<option selected>25</option>
+										<option>50</option>
+									<% } else if (question.point_total == 50) {%>
+										<option>5</option>
+										<option>10</option>
+										<option>25</option>
+										<option selected>50</option>
+									<% } else { %>
+										<option>5</option>
+										<option>10</option>
+										<option>25</option>
+										<option>50</option>
+										<option selected><%= question.point_total %></option>
+									<% } %>
+								</select>
+							</div>
+						</div>
+					</div>
+                </div>
+            <% }) %>
+
+			</div>
+
+			<div id="button-container" class="quiz-control mt-4">
+				<a class="btn btn-lg btn btn-block btn-primary" role="button" onclick="approve_quiz()">Approve quiz</a>
+				<a class="btn btn-lg btn btn-block btn-outline-primary" role="button" onclick="reject_quiz()">Reject quiz</a>
+			</div>
+		</div>
+
+		</div>
+	</main>
+
+	<script type="text/javascript">
+		let current_question = parseInt(document.getElementById('questions-container').title);
+		let current_answer = (current_question * 4);
+		const quiz_id = ((window.location.href).split("/").slice(-1)[0].split("").filter(elem => elem.match(/[0-9]/g))).join("");
+
+		function handle_errors(errors) {
+			for (const error of errors)
+			{
+				// Create alert
+				const alert = document.createElement("div");
+				alert.className = "mt-4 alert alert-danger alert-dismissible fade show";
+				alert.role = "alert";
+				alert.innerHTML = `<strong>${(error.param).toUpperCase()}</strong>: ${error.msg}<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+								   <span aria-hidden="true">&times;</span></button>`;
+
+				// Add alert
+				document.getElementById("submit-quiz-format").appendChild(alert);
+			}
+		}
+
+		function remove_forms() {
+			document.getElementById("metadata").remove();
+			document.getElementById("questions-container").remove();
+		}
+
+		function reject_quiz() {
+			fetch(`/quiz/reject/${quiz_id}`, {
+				method: "POST"
+			}).then(response => response.json()).then(data => {
+				if (data['status_code'] === 200) {
+					remove_forms()
+					document.getElementById("button-container").innerHTML = `<h1 class="h4">Quiz rejected</h1>`;
+					document.getElementById("button-container").innerHTML += `<a class="btn btn-lg btn btn-block btn-primary mt-4" role="button" href="/quiz">Browse quizzes</a>
+																			  <a class="btn btn-lg btn btn-block btn-outline-primary" href="/quiz/pending" role="button">Approve another</a>`;
+				}
+				else if (data['status_code'] === 400) {
+					handle_errors(data.errors);
+				}
+				else if (data['status_code'] == 403) {
+					remove_forms();
+					document.getElementById("button-container").innerHTML = `<h1 class="h4">Session error: please <a href="/sign_in">log in</a> and try again</h1>`;
+				}
+				else if (data['status_code'] === 500) {
+					remove_forms();
+					document.getElementById("button-container").innerHTML = `<h1 class="h4">Server error: couldn't reject quiz</h1>`;
+				}
+				else {
+					console.log(data["status_code"]);
+					return; // catch other codes
+				}
+			}).catch(err => {
+				console.error(err);;
+				return;
+			});
+		}
+
+		function approve_quiz() {
+			// Retrieve metadata
+			const location_name = (document.getElementById("location-name").value).trim();
+			const location_image = (document.getElementById("location-image").value).trim();
+			const quiz_desc = (document.getElementById("quiz-desc").value).trim();
+
+			const latitude = parseFloat(document.getElementById("latitude").value);
+			const longitude = parseFloat(document.getElementById("longitude").value);
+
+			// Retrieve questions
+			const questions = [];
+
+			for (let i = 1; i <= current_question; ++i) {
+				const question_prompt = (document.getElementById(`question-${i}`).value).trim();
+				const point_total = parseInt(document.getElementById(`point-${i}`).value);
+				const correct = parseInt(document.getElementById(`correct-${i}`).value);
+
+				const responses = [];
+				const response_offset = ((i - 1) * 4) + 1; // Calculate current response
+
+				for (let j = response_offset; j < (response_offset + 4); ++j) {
+					responses.push((document.getElementById(`answer-${j}`).value).trim());
+				}
+
+				const question = {
+					question: question_prompt,
+					responses: responses,
+					point_total: point_total,
+					correct: correct
+				};
+
+				questions.push(question);
+			}
+
+			// Construct quiz
+			const quiz = {
+				location_name: location_name,
+				img: location_image,
+				description: quiz_desc,
+				coordinates: `${latitude},${longitude}`,
+				questions: questions
+			};
+
+			fetch(`/quiz/approve/${quiz_id}`, {
+				method: "POST",
+				body: JSON.stringify(quiz),
+				headers: { "Content-type": "application/json; charset=UTF-8" }
+			}).then(response => response.json()).then(data => {
+				if (data['status_code'] === 200) {
+					remove_forms()
+					document.getElementById("button-container").innerHTML = `<h1 class="h4">Quiz approved</h1>`;
+					document.getElementById("button-container").innerHTML += `<a class="btn btn-lg btn btn-block btn-primary mt-4" role="button" href="/quiz">Browse quizzes</a>
+																			  <a class="btn btn-lg btn btn-block btn-outline-primary" href="/quiz/pending" role="button">Approve another</a>`;
+				}
+				else if (data['status_code'] === 400) {
+					handle_errors(data.errors);
+				}
+				else if (data['status_code'] == 403) {
+					remove_forms();
+					document.getElementById("button-container").innerHTML = `<h1 class="h4">Session error: please <a href="/sign_in">log in</a> and try again</h1>`;
+				}
+				else if (data['status_code'] === 500) {
+					remove_forms();
+					document.getElementById("button-container").innerHTML = `<h1 class="h4">Server error: couldn't approve quiz</h1>`;
+				}
+				else {
+					console.log(data["status_code"]);
+					return; // catch other codes
+				}
+			}).catch(err => {
+				console.error(err);;
+				return;
+			});
+		}
+	</script>
+
+	<%- include("../components/footer.ejs"); %>
+
+</body>
+
+</html>

@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <%- include("../components/head.ejs"); %>
+</head>
+
+<style>
+  .username {
+    color: hsl(228, 54%, 80%);
+    text-shadow: black 0px 0px 0px !important;
+  }
+
+  .quiz-score-total {
+    color: hsla(208, 100%, 97%, 0.65) !important;
+  }
+
+  .quiz-card {
+    border-width: 0 0px 0px 3px !important;
+    /* border-radius: 0% !important; */
+    transition: background-color .10s !important;
+  }
+
+  .quiz-card.active {
+    border-width: 0 0px 0px 3px !important;
+    /* border-radius: 0% !important; */
+    border-color: transparent;
+    transition: background-color .10s !important;
+  }
+
+  .quiz-card:hover {
+    background-color: hsl(0, 0%, 18%);
+    /* border-color: #6BB0C3; */
+
+    border-image: linear-gradient(180deg, #6bb0c3, #b0bbe8) 3;
+    transition: background-color .15s !important;
+
+    /* top | right | bottom | left */
+    border-width: 0px 0px 0px 3px !important;
+  }
+
+  .quiz-card:active {
+    background-color: hsl(0, 0%, 18%);
+  }
+
+  .quiz-card:focus {
+    background-color: hsl(0, 0%, 18%);
+  }
+
+  #user-rank {
+    font-family: 'Nunito Sans';
+  }
+
+  .user-metadata {
+    border-color: rgba(0,0,0,0.5);
+  }
+</style>
+
+<body>
+
+  <%- include("../components/navbar.ejs"); %>
+
+  <main role="main" class="container">
+
+    <div class="jumbotron bg-dark text-light shadow">
+
+      <h1 class="text-center pb"><%= profile_info.username %></h1>
+      <div id="user-rank" class="text-center pb-2 h5"><%= profile_info.is_moderator == 1 ? "Moderator":"User"%></div>
+
+      <div class="justify-content-center text-center mb-4">
+        <ul class="list-group list-group-horizontal-sm">
+          <li class="list-group-item flex-fill user-metadata">Score: <%= profile_info.score %></li>
+          <li class="list-group-item flex-fill user-metadata">Ranking: <%= profile_info.score_rank %></li>
+          <li class="list-group-item flex-fill user-metadata">Quizzes complete: <%= profile_info.quizzes_completed %></li>
+        </ul>
+      </div>
+
+      <% if (locals.completed_quizzes !== undefined) { %>
+        <ul class="list-group shadow">
+
+          <% completed_quizzes.forEach((quiz) => { %>
+            <a href="/quiz/<%= quiz.quiz_id %>" class="mb-1 quiz-card list-group-item list-group-item-action">
+              <div class="justify-content-between">
+                <span class="h5 float-left username mt-2 mb-2"><%= quiz.name %></span>
+                <span title="<%= ((new Date(quiz.completion_date * 1000)).toString()) %>" class="float-right quiz-score-total mt-2 mb-2">
+                  <%= ((new Date(quiz.completion_date * 1000)).toString()).slice(4,15) %>
+                </span>
+              </div>
+            </a>
+          <% }) %>
+        </ul>
+      <% } %>
+
+    </div>
+
+  </main>
+
+  <%- include("../components/footer.ejs"); %>
+
+</body>
+
+</html>

@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <%- include("../components/head.ejs"); %>
+</head>
+
+<style>
+  .quiz-name {
+    color: hsl(228, 54%, 80%);
+    text-shadow: black 0px 0px 0px !important;
+  }
+
+  .quiz-desc {
+    color: hsla(208, 100%, 97%, 0.6) !important;
+  }
+
+  .quiz-score-total {
+    color: hsla(208, 100%, 97%, 0.65) !important;
+  }
+
+  .quiz-card {
+    border-width: 0 0px 0px 3px !important;
+    /* border-radius: 0% !important; */
+    transition: background-color .10s !important;
+  }
+
+  .quiz-card:hover {
+    background-color: hsl(0, 0%, 18%);
+    /* border-color: #6BB0C3; */
+
+    border-image: linear-gradient(180deg, #6bb0c3, #b0bbe8) 3;
+    transition: background-color .15s !important;
+
+    /* top | right | bottom | left */
+    border-width: 0px 0px 0px 3px !important;
+  }
+
+  .quiz-card:active {
+    background-color: hsl(0, 0%, 18%);
+  }
+
+  .quiz-card:focus {
+    background-color: hsl(0, 0%, 18%);
+  }
+</style>
+
+
+<body>
+
+  <%- include("../components/navbar.ejs"); %>
+
+  <main role="main" class="container">
+
+    <div class="jumbotron bg-dark text-light shadow pt-6">
+
+      <h1 class="text-center <%= (pending || !user)  ? "mb-4" : "" %>"><%= pending ? "Pending" : "Available" %> Quizzes</h1>
+
+      <% if ((!pending) && (user)) { %>
+        <div class="dropdown text-center pb-4">
+          <button id="category_select" class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <% if (sort == 1) { %>
+              All Quizzes
+            <% } else { %>
+              Uncompleted Quizzes
+            <% } %>
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <% if (sort == 1) { %>
+              <a class="dropdown-item" href="/quiz/uncompleted">Uncompleted Quizzes</a>
+            <% } else { %>
+                <a class="dropdown-item" href="/quiz/">All Quizzes</a>
+            <% } %>
+          </div>
+        </div>
+      <% } %>
+
+      <div id="question_list" class="list-group shadow">
+        <% quizzes.forEach((quiz) => { %>
+          <a href="/quiz/<%= pending ? `pending/${quiz.quiz_id}` : quiz.quiz_id %>" class="mb-1 quiz-card list-group-item list-group-item-action">
+            <div class="d-flex w-100 justify-content-between">
+              <h5 class="mb-1 quiz-name"><%= quiz.name %></h5>
+              <small class="quiz-score-total"><%= quiz.quiz_total %> points</small>
+            </div>
+            <p class="mb-1 quiz-desc"><%= quiz.description %></p>
+          </a>
+        <% }) %>
+      </div>
+
+      <% if (!pending) { %>
+        <p class="mt-4 text-muted text-center mb-0">Want to contribute a quiz? <a href="/submit_quiz">Submit your own!</a></p>
+      <% } %>
+
+
+    </div>
+
+  </main>
+
+  <%- include("../components/footer.ejs"); %>
+
+</html>

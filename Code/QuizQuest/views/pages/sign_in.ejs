@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <%- include("../components/head.ejs"); %>
+</head>
+
+<link href="../../assets/css/sign_up.css" rel="stylesheet">
+
+<style>
+    #compass-logo {
+        -webkit-filter: invert(100%);
+        /* safari 6.0 - 9.0 */
+        filter: invert(100%);
+    }
+
+    .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
+    @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+            font-size: 3.5rem;
+        }
+    }
+</style>
+
+<body>
+
+    <%- include("../components/navbar.ejs"); %>
+
+    <main role="main" class="container text-center">
+        <!-- If needed, render errors regarding account sign-in -->
+        <% if (locals.errors) { %>
+        <div class="alert alert-warning" role="alert">
+            <%= errors.message %>
+        </div>
+        <%} %>
+
+        <div class="jumbotron bg-dark text-light shadow">
+
+            <form class="form-signin" action="/user/auth" method="POST">
+                <img id="compass-logo" class="mb-4" alt="compass logo" height="72" width="72"
+                    src="../../assets/svg/compass.svg">
+
+                <h1 class="h3 mb-3 font-weight-normal">Log in</h1>
+
+                <label class="sr-only" for="inputUsername">Username</label>
+
+                <input autofocus="" class="form-control mt-2" id="inputUsername" placeholder="Username" name="username"
+                    required="" type="text">
+
+                <label class="sr-only" for="inputPassword">Password</label>
+
+                <input class="form-control mb-4" id="inputPassword" placeholder="Password" required="" name="password"
+                    type="password">
+
+                <button class="btn btn-lg btn-primary btn-block" type="submit">
+                    Log in
+                </button>
+
+                <p class="mt-3 mb-3">
+                    Don't have an account? Sign-up <a href="/sign_up">here</a>
+                </p>
+            </form>
+        </div>
+    </main>
+
+    <%- include("../components/footer.ejs"); %>
+
+</body>
+
+</html>

@@ -1,0 +1,61 @@
+<nav class="navbar navbar-expand-md navbar-dark bg-dark shadow mb-<%=locals.navbarMargin!==undefined?locals.navbarMargin:4%>">
+
+    <a id="quizquest-brand" class="navbar-brand" href="/">QuizQuest</a>
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
+        aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+
+        <span class="navbar-toggler-icon"></span>
+
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+
+        <ul class="navbar-nav ml-0">
+            <li class="nav-item">
+                <a class="nav-link" href="/map">Explore</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="/leaderboard">Leaderboard</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="/quiz">Browse Quizzes</a>
+            </li>
+
+            <% if (locals.user!==undefined) { %>
+                <li class="nav-item">
+                    <a class="nav-link" href="/submit_quiz">Submit Quiz</a>
+                </li>
+            <% } %>
+
+            <% if (locals.user!==undefined) { %>
+                <% if (locals.user.moderator === 1) { %>
+                    <li class="nav-item">
+                    <a class="nav-link" href="/quiz/pending/">Approve Quizzes</a>
+                </li>
+                <% } %>
+            <% } %>
+        </ul>
+
+        <ul class="navbar-nav ml-auto">
+            <% if (locals.user!==undefined) { %>
+                <li class="nav-item">
+                    <a class="btn btn-outline-primary nav-link ml-2 pl-2 pr-2" href="/log_out/">Log out</a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn btn-primary nav-link pl-3 pr-3 ml-2" href="/user/<%= locals.user.user_id %>"><%= user.username %></a>
+                </li>
+            <% } else { %>
+                <li class="nav-item">
+                    <a role="button" class="btn btn-outline-primary nav-link pl-2 pr-2" href="/sign_in/">Log in</a>
+                </li>
+                <li class="nav-item">
+                    <a role="button" class="btn btn-primary nav-link pl-3 pr-3 ml-2" href="/sign_up/">Sign up</a></li>
+            <% } %>
+        </ul>
+
+    </div>
+
+</nav>

@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<%- include("../components/head.ejs"); %>
+
+	<style>
+		.card {
+			border: 0px;
+		}
+
+		.quiz {
+			background-color: hsl(0, 0%, 21%) !important;
+		}
+
+		.question {
+			background-color: hsl(0, 0%, 21%) !important;
+		}
+
+		#help {
+			cursor: help !important;
+		}
+
+		.action-icon {
+			-webkit-filter: invert(100%); /* safari 6.0 - 9.0 */
+			filter: invert(100%);
+			opacity: 30%;
+			transition: opacity 0.15s;
+			cursor: pointer !important;
+		}
+
+		.action-icon:hover {
+			opacity: 65%;
+			transition: opacity 0.15s;
+		}
+	</style>
+</head>
+
+<body>
+
+	<%- include("../components/navbar.ejs"); %>
+
+	<main role="main" class="container text-center">
+		<div id="submit-quiz-format" class="jumbotron bg-dark text-light shadow">
+
+			<h1 class="h1 mb-4">Submit Quiz</h1>
+
+			<div id="metadata" class="card metadata shadow" style="width: 100%">
+				<div class="h4 card-header">Metadata
+					<img id="help" class="float-right align-middle action-icon" alt="Metadata help"
+						src="../../assets/svg/help-circle.svg" title="Metadata information can be found on Wikipedia"
+						style="padding-top: 2.5px">
+				</div>
+
+				<div class="quiz pl-4 pr-4 pt-2 pb-4 mb-0 rounded-top">
+					<!-- <label class="h5 mb-4 mt-2" for="location-image">Location</label> -->
+					<div class="form-group mt-4">
+						<input type="text" class="form-control form-control-lg" id="location-name" autofocus maxlength="48"
+							required placeholder="Location name">
+					</div>
+
+					<div class="form-group">
+						<input required type="url" class="form-control" id="location-image" placeholder="Location image">
+					</div>
+
+					<div id="coordinates-form" class="form-group row text-center rounded-bottom mb-0">
+						<div class="col">
+							<input required id="latitude" type="text" class="form-control" placeholder="Latitude">
+						</div>
+						<div class="col">
+							<input required id="longitude" type="text" class="form-control" placeholder="Longitude">
+						</div>
+					</div>
+				</div>
+
+				<div class="quiz pl-4 pr-4 pt-2 pb-4 mb-0 mt-0">
+					<!-- <label class="h5 mb-4" for="quiz-desc">Quiz</label> -->
+					<div class="form-group mb-0">
+						<textarea type="text" class="form-control" id="quiz-desc" maxlength="160" placeholder="Quiz description"></textarea>
+					</div>
+				</div>
+
+			</div>
+
+			<div class="questions mt-4" id="questions-container">
+				<div class="card" style="width: 100%;">
+					<div class="h4 card-header float-none">Question 1
+						<img class="float-right align-middle action-icon" alt="Remove question" title="Remove question"
+							src="../../assets/svg/x-circle.svg" style="padding-top: 2.5px" onclick="remove_question(1)">
+					</div>
+
+					<div class="question question-odd pl-4 pr-4 pt-2 pb-4 rounded">
+
+						<div class="form-group">
+							<textarea placeholder="Question prompt" class="form-control mt-3 mb-4" id="question-1"  maxlength="160" rows="2"></textarea>
+						</div>
+
+						<div class="row mt-2">
+							<div class="col">
+								<input id="answer-1" type="text" class="form-control" placeholder="Answer 1">
+							</div>
+							<div class="col">
+								<input id="answer-2" type="text" class="form-control" placeholder="Answer 2">
+							</div>
+						</div>
+						<div class="row mt-2">
+							<div class="col">
+								<input id="answer-3" type="text" class="form-control" placeholder="Answer 3">
+							</div>
+							<div class="col">
+								<input id="answer-4" type="text" class="form-control" placeholder="Answer 4">
+							</div>
+						</div>
+
+						<div class="row mt-4">
+							<div class="col">
+								<select id="correct-1" class="custom-select" required>
+									<option selected disabled value="">Correct answer</option>
+									<option>1</option>
+									<option>2</option>
+									<option>3</option>
+									<option>4</option>
+								</select>
+							</div>
+							<div class="col">
+								<select id="point-1" class="custom-select" required>
+									<option selected disabled value="">Point total</option>
+									<option>5</option>
+									<option>10</option>
+									<option>25</option>
+									<option>50</option>
+									<option>100</option>
+								</select>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div id="button-container" class="quiz-control mt-4">
+				<a class="btn btn-lg btn btn-block btn-primary" role="button" onclick="submit_quiz()">Submit quiz</a>
+				<a class="btn btn-lg btn btn-block btn-outline-primary" role="button" onclick="add_question()">Add question</a>
+			</div>
+		</div>
+
+		</div>
+	</main>
+
+	<script type="text/javascript">
+		let current_question = 1;
+		let current_answer = 4;
+
+		function handle_errors(errors) {
+			for (const error of errors)
+			{
+				// Create alert
+				const alert = document.createElement("div");
+				alert.className = "mt-4 alert alert-danger alert-dismissible fade show";
+				alert.role = "alert";
+				alert.innerHTML = `<strong>${error.msg}<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+								   <span aria-hidden="true">&times;</span></button>`;
+
+				// Add alert
+				document.getElementById("submit-quiz-format").appendChild(alert);
+			}
+		}
+
+		function clear_alerts() {
+			const alerts = [...document.getElementsByClassName('alert')];
+			alerts.forEach(elem => elem.remove());
+		}
+
+		function remove_question(question_number) {
+			for (const question_card of document.getElementsByClassName("card"))
+			{
+				if ((question_card.children[0].innerText).trim() === `Question ${question_number}`) {
+					question_card.remove();
+					break;
+				}
+			}
+		}
+
+		function remove_forms() {
+			document.getElementById("metadata").remove();
+			document.getElementById("questions-container").remove();
+		}
+
+		function submit_quiz() {
+			// Retrieve metadata
+			const location_name = (document.getElementById("location-name").value).trim();
+			const location_image = (document.getElementById("location-image").value).trim();
+			const quiz_desc = (document.getElementById("quiz-desc").value).trim();
+
+			const latitude = parseFloat(document.getElementById("latitude").value);
+			const longitude = parseFloat(document.getElementById("longitude").value);
+
+			// Retrieve questions
+			const questions = [];
+
+			for (let i = 1; i <= current_question; ++i) {
+				try {
+					const question_prompt = (document.getElementById(`question-${i}`).value).trim();
+					const point_total = parseInt(document.getElementById(`point-${i}`).value);
+					const correct = parseInt(document.getElementById(`correct-${i}`).value);
+
+					const responses = [];
+					const response_offset = ((i - 1) * 4) + 1; // Calculate current response
+
+					for (let j = response_offset; j < (response_offset + 4); ++j) {
+						responses.push((document.getElementById(`answer-${j}`).value).trim());
+					}
+
+					const question = {
+						question: question_prompt,
+						responses: responses,
+						point_total: point_total,
+						correct: correct
+					};
+
+					questions.push(question);
+				}
+				catch { }
+			}
+
+			// Construct quiz
+			const quiz = {
+				location_name: location_name,
+				img: location_image,
+				description: quiz_desc,
+				coordinates: `${latitude},${longitude}`,
+				questions: questions
+			};
+
+			fetch("/quiz/submit/", {
+				method: "POST",
+				body: JSON.stringify(quiz),
+				headers: { "Content-type": "application/json; charset=UTF-8" }
+			}).then(response => response.json()).then(data => {
+				if (data['status_code'] === 200) {
+					remove_forms();
+					clear_alerts();
+					document.getElementById("button-container").innerHTML = `<h1 class="h4">Quiz submitted</h1>`;
+					document.getElementById("button-container").innerHTML += `<a class="btn btn-lg btn btn-block btn-primary mt-4" role="button" href="/quiz">Browse quizzes</a>
+																			  <a class="btn btn-lg btn btn-block btn-outline-primary" href="/submit_quiz" role="button">Submit another</a>`;
+				}
+				else if (data['status_code'] === 400) {
+					clear_alerts(); // Remove previous alerts
+					handle_errors(data.errors);
+				}
+				else if (data['status_code'] === 403) {
+					remove_forms();
+					document.getElementById("button-container").innerHTML = `<h1 class="h4">Session error: please <a href="/sign_in">log in</a> and try again</h1>`;
+				}
+				else if (data['status_code'] === 500) {
+					remove_forms();
+					document.getElementById("button-container").innerHTML = `<h1 class="h4">Server error: couldn't submit quiz</h1>`;
+				}
+				else {
+					console.log(data["status_code"]); // catch other codes
+				}
+			}).catch(err => {
+				console.error(err);
+				return;
+			});
+		}
+
+		function add_question() {
+			// Limit quizzes to 20 questions
+			if (current_question > 19) {
+				return;
+			}
+
+			const card = document.createElement("div");
+			card.className = "card mt-4";
+			card.style = "width: 100%;";
+
+			card.innerHTML = `<div class="h4 card-header">Question ${++current_question}
+							  <img class="float-right align-middle action-icon" alt="Remove question" title="Remove question"
+							   src="../../assets/svg/x-circle.svg" style="padding-top: 2.5px" onclick="remove_question(${current_question})"></div>
+							  <div class="question question-odd pl-4 pr-4 pt-2 pb-4 rounded">
+								<div class="form-group">
+									<textarea placeholder="Question prompt" class="form-control mt-3 mb-4" id="question-${current_question}"  maxlength="160" rows="2"></textarea>
+								</div>
+								<div class="row mt-2">
+									<div class="col">
+										<input id="answer-${++current_answer}" type="text" class="form-control" placeholder="Answer 1">
+									</div>
+									<div class="col">
+										<input id="answer-${++current_answer}" type="text" class="form-control" placeholder="Answer 2">
+									</div>
+								</div>
+								<div class="row mt-2">
+									<div class="col">
+										<input id="answer-${++current_answer}" type="text" class="form-control" placeholder="Answer 3">
+									</div>
+									<div class="col">
+										<input id="answer-${++current_answer}" type="text" class="form-control" placeholder="Answer 4">
+									</div>
+								</div>
+								<div class="row mt-4">
+									<div class="col">
+										<select id="correct-${current_question}" class="custom-select" required>
+											<option selected disabled value="">Correct answer</option>
+											<option>1</option>
+											<option>2</option>
+											<option>3</option>
+											<option>4</option>
+										</select>
+									</div>
+									<div class="col">
+										<select id="point-${current_question}" class="custom-select" required>
+											<option selected disabled value="">Point total</option>
+											<option>5</option>
+											<option>10</option>
+											<option>25</option>
+											<option>50</option>
+											<option>100</option>
+										</select>
+									</div>
+								</div>
+							</div>`;
+
+			document.getElementById("questions-container").appendChild(card);
+		}
+	</script>
+
+	<%- include("../components/footer.ejs"); %>
+
+</body>
+
+</html>

@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <%- include("../components/head.ejs"); %>
+
+  <!-- Leaflet js -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+    integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+    crossorigin="" />
+
+  <!-- Make sure you put this AFTER Leaflet's CSS -->
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+    integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+    crossorigin=""></script>
+
+  <style>
+    #player_map {
+      min-height: calc(100vh - 63px);
+    }
+
+    .leaflet-popup-content-wrapper {
+      font-family: 'Nunito Sans', sans-serif;
+    }
+
+    .leaflet-popup-content {
+      min-width: 10rem !important;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <%- include("../components/navbar.ejs"); %>
+
+  <main id="map_container" role="main" class="container-fluid p-0">
+    <div id="player_map"></div>
+  </main>
+
+  <!-- Inline JavaScript -->
+  <script>
+    function init() {
+      const showPosition = (position) => {
+          init_map(position.coords.latitude, position.coords.longitude, 13);
+      }
+
+      // Check if the location is allowed by the browser
+      if ('geolocation' in navigator)
+      {
+        navigator.permissions.query({ name: 'geolocation' }).then(function (result) {
+          if (result.state == 'granted') {
+            navigator.geolocation.getCurrentPosition(showPosition);
+          } else if (result.state == 'prompt') {
+            navigator.geolocation.getCurrentPosition(showPosition);
+          }
+          else {
+            // Put user in Topeka (US heartland)
+            init_map(39.055833, -95.689444, 5);
+          }
+        });
+      }
+      else
+      {
+        document.getElementById("player_map").remove();
+        document.getElementById("map_container").innerHTML = `<div class="jumbotron bg-dark text-light shadow pt-6"><p class="lead">Geolocation is not supported by this browser.</p></div>`;
+      }
+    }
+
+    function init_map(user_lat, user_long, zoom_level) {
+      // Add map to document
+      const map = L.map("player_map", {
+        center: [user_lat, user_long],
+        zoom: zoom_level
+      });
+
+      // Access mapbox api for tile information
+      L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
+        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+        maxZoom: 20,
+        id: 'mapbox/streets-v11', // "dark-v10" for a dark theme
+        tileSize: 512,
+        zoomOffset: -1,
+        accessToken: 'pk.eyJ1IjoiYXBpLXRlc3QtZm9yLWRldiIsImEiOiJja2ZnYjI4N2kwNml6MnJwM2s2dXo2dDA1In0.R7I528FFrUAbxvU73vu8zQ'
+      }).addTo(map);
+
+      // Make an api request for all locations in the database
+      fetch("/api/locations").then(data => data.json()).then(res => {
+        for (const location of res) {
+          const { latitude, longitude, name, quiz_id, img } = location;
+          L.marker([latitude, longitude]).addTo(map)
+           .bindPopup(`<img alt="An image of ${name}" class="img-fluid mb-2" src="${img}"></img>${name}<br><a href="/quiz/${quiz_id}">Start Quiz</a>`);
+        }
+      });
+    }
+
+    init();
+
+  </script>
+
+  <%- include("../components/footer.ejs"); %>
+
+</body>
+
+</html>

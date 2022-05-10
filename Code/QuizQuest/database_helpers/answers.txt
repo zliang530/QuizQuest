@@ -1,0 +1,441 @@
+question_id;answer;correct
+1;Marshall Field Building;0
+1;John F. Kennedy Building;0
+1;The Sears Tower;1
+1;Aon Tower;0
+2;1971;0
+2;1973;1
+2;2001;0
+2;1985;0
+3;110;1
+3;163;0
+3;200;0
+3;105;0
+4;Neo-futurism;0
+4;Art Deco;0
+4;International;1
+4;Brutalist;0
+5;Adrian Smith;0
+5;Frank Lloyd Wright;0
+5;Fazlur Rahman Khan;1
+5;David Childs;0
+6;1921;1
+6;1911;0
+6;1931;0
+6;1901;0
+7;Comedy routines;0
+7;Stage plays;0
+7;Magic shows;0
+7;Films;1
+8;It's arch;0
+8;It's sign;1
+8;It's doors;0
+8;It's seats;0
+9;Art Deco;0
+9;Art Noveau;0
+9;French Baroque;1
+9;Brutalism;0
+10;1983;1
+10;1973;0
+10;1953;0
+10;1963;0
+11;5-8 meters;1
+11;8-10 meters;0
+11;10-12 meters;0
+11;12-14 meters;0
+12;Stone, wood, and soil;0
+12;Steel, soil, and brick;0
+12;Iron, wood, and stone;0
+12;Stone, soil, and brick;1
+13;To display China's wealth;0
+13;To protect China from invasion;1
+13;To aid in the transportation of goods;0
+13;To be seen from space;0
+14;Roughly 2,300 years ago;1
+14;Roughly 2,500 years ago;0
+14;Roughly 2,700 years ago;0
+14;Roughly 2,900 years ago;0
+15;Approximately 16,000 kilometers;0
+15;Approximately 30,000 kilometers;0
+15;Approximately 21,000 kilometers;1
+15;Approximately 12,500 kilometers;0
+16;A civilization;0
+16;A pyramid;0
+16;A city;1
+16;A river;0
+17;The Aztects;0
+17;The Mayans;1
+17;The Olmecs;0
+17;The Toltecs;0
+18;18;0
+18;5;0
+18;20;0
+18;13;1
+19;30 meters;1
+19;55 meters;0
+19;52 meters;0
+19;25 meters;0
+20;Hernan Cortez;0
+20;Francisco Pizzarro;0
+20;Francisco Mentejo the Younger;1
+20;Francisco Vazquez de Coronado;0
+21;Paris wanted to show their wealth;0
+21;For the 1889 World's Fair;1
+21;Paris wanted to be one of the first to built a tall building from that time;0
+21;It was a gift from the USA;0
+22;324 meters tall;1
+22;239 meters tall;0
+22;350 meters tall;0
+22;330 meters tall;0
+23;From 1888 to 1890;0
+23;From 1886 to 1888;0
+23;From 1887 to 1890;0
+23;From 1887 to 1889;1
+24;It would ruin Paris' beauty;0
+24;They were never against it, they actually supported it;0
+24;No one believed it was possible to built such a tall building;1
+24;It would ruin artist careers;0
+25;Gustave Eiffel;1
+25;Émile Nouguier;0
+25;Maurice Koechlin;0
+25;Adolphe Alphand;0
+26;Created by the gods;0
+26;Beautiful Island;0
+26;First Born;1
+26;It's time;0
+27;France;0
+27;England;0
+27;Germany;0
+27;USA;1
+28;Fishing;0
+28;Coconut harvesting;0
+28;Tourism;1
+28;Transportation system;0
+29;France;1
+29;England;0
+29;Spain;0
+29;United States of America;0
+30;England;0
+30;Spain;0
+30;France;1
+30;It's its own country;0
+31;147 meters;1
+31;181 meters;0
+31;111 meters;0
+31;81 meters;0
+32;As a place of religous worship;0
+32;As a tomb for the pharaoh;1
+32;As a stable reserve for storing food;0
+32;As a display of the pharaoh's wealth;0
+33;Granite, wood, clay, and mortar;0
+33;Clay, granite, and steel;0
+33;Clay, sandstone, and stone;0
+33;Limestone, basalt, granite, and mortar;1
+34;3;1
+34;2;0
+34;1;0
+34;0;0
+35;Workers used a pulley to lift the stones;0
+35;Stones were broken into smaller pieces and reassembled on top;0
+35;Stones were transported through sledges operated by workers;1
+35;Extraterrestrial beings came to help the Egyptians move the stones;0
+36;81 meters;0
+36;57 meters;1
+36;93 meters;0
+36;100 meters;0
+37;1230;0
+37;1173;1
+37;1532;0
+37;1755;0
+38;To be a meeting place for the wealthy;0
+38;To be a place for the wealthy to fortify during invasion;0
+38;To defy gravity;0
+38;To showcase the prosperity of Pisa;1
+39;Through trade with neighboring city states;0
+39;Through raiding neighboring city states;1
+39;By harvesting Pisa's precious metal reserves;0
+39;By raising taxes;0
+40;Marble;1
+40;Granite;0
+40;Sandstone;0
+40;Limestone;0
+41;Created by ancient alien civilizations;0
+41;Erosion of the land allows for water to flow into the Niagara River;0
+41;A man made project demanded by the government to attract tourist;0
+41;End of Ice Age when large quantity of water were released from melting ice, draining to Niagara River;1
+42;35 meters;0
+42;51 meters;1
+42;70 meters;0
+42;90 meters;0
+43;Niagara's distinct algae changes the PH balance of the water;0
+43;Light refraction from the nearyby greenery;0
+43;Dissolved salts and finely ground rocks;1
+43;Biowaste produced by Niagara's wildlife;0
+44;Hydroelectric power generation;0
+44;Fishing;0
+44;Recreation (boating, swimming, etc.);0
+44;Wildlife reservation;1
+45;30 million;1
+45;20 million;0
+45;10 million;0
+45;5 million;0
+46;Yellowstone is the most visited national park in the United States;0
+46;Yellowstone is the first national park in the world to be established;1
+46;Yellowstone is the largest national park in the United States;0
+46;Yellowstone is the most biodiverse national park in the United States;0
+47;Every hour;1
+47;Every day;0
+47;Every week;0
+47;Every month;0
+48;4 states;0
+48;3 states;1
+48;2 states;0
+48;1 states;0
+49;125 geysers;0
+49;250 geysers;0
+49;500 geysers;1
+49;1000 geysers;0
+50;Bison;0
+50;Moose;0
+50;River Otter;0
+50;Caribou;1
+51;Tokyo Skytree;0
+51;Japan Radio Tower;1
+51;Japan's Greatest Tower;0
+51;Nikken Sekkei;0
+52;From 1956 to 1959;0
+52;From 1950 to 1953;0
+52;From 1957 to 1958;1
+52;From 1958 to 1959;0
+53;A private company wanted to take control of the broadcasting radio;0
+53;A broadcasting tower was needed and it was a way to show their economic growth;1
+53;Japan wanted to compete with the Eiffiel tower;0
+53;It was built with the intention of bringing tourism to Tokyo;0
+54;1092 ft;1
+54;955 ft;0
+54;1082 ft;0
+54;1006 ft;0
+55;Every 3 years and it take 6 months;0
+55;Every year and it takes 9 months;0
+55;Every 8 years and it takes 2 years;0
+55;Every 5 years and it takes 1 year;1
+56;Cork county;1
+56;Meath county;0
+56;Antrim county;0
+56;Fermanagh county;0
+57;Rare flower garden;0
+57;There is no garden;0
+57;Poisonous garden;1
+57;There is a vagetable garden;0
+58;It's said to give you good luck;0
+58;It's said to gift you eloquence;1
+58;It's said to bring you fortune;0
+58;It's said to cure disease;0
+59;1440;0
+59;1230;0
+59;1446;0
+59;1210;1
+60;Colthurst Family;0
+60;MacCarthy Family;1
+60;Jefferyes family;0
+60;Williams Family;0
+61;1600;0
+61;1572;1
+61;1450;0
+61;1558;0
+62;Olmec;0
+62;Inca;1
+62;Maya;0
+62;Aztec;0
+63;1855;0
+63;1874;0
+63;1867;0
+63;1911;1
+64;Droughts, famine, and agricultural failures;0
+64;Spanish Conquistadors pillaged it;0
+64;New world diseases led to mass death;0
+64;It is unknown;1
+65;Peru;1
+65;Bolivia;0
+65;Ecuador;0
+65;Chile;0
+66;70 AD;0
+66;75 AD;0
+66;72 AD;0
+66;80 AD;1
+67;Amphitheatrum Flavium;1
+67;Basilica Giulia;0
+67;Colossus Neronis;0
+67;Forum Romanum;0
+68;Travertine;1
+68;Granite;0
+68;Sandstone;0
+68;Marble;0
+69;Falling popularity among the public;0
+69;The Western Roman Empire fell;1
+69;Earthquakes and natural disasters;0
+69;Funding divestment from Christian leadership;0
+70;50,000;0
+70;65,000;0
+70;100,000;0
+70;80,000;1
+71;3 million;0
+71;2 million;0
+71;1.5 million;1
+71;1 million;0
+72;1868;0
+72;1900;0
+72;1893;1
+72;1890;0
+73;500,000;0
+73;200,000;0
+73;300,000;1
+73;150,000;0
+74;15;0
+74;5;0
+74;8;0
+74;11;1
+75;Beaux-Arts;1
+75;French Baroque;0
+75;Gothic Revival;0
+75;Neoclassical;0
+76;Anish Kapoor;1
+76;Henry Moore;0
+76;Chryssa;0
+76;Marshall Fredericks;0
+77;Beanie;0
+77;The Bean;1
+77;Cloud;0
+77;Chrome Dome;0
+78;2006;1
+78;2004;0
+78;2010;0
+78;2008;0
+79;Medieval armor;0
+79;Light refraction;0
+79;Liquid mercury;1
+79;Cloud iridescence;0
+80;Stainless steel;1
+80;Aluminum;0
+80;Tin;0
+80;Chromium;0
+81;16;1
+81;11;0
+81;14;0
+81;13;0
+82;Brutalism;1
+82;Collegiate Gothic;0
+82;Bauhaus;0
+82;Functionalism;0
+83;Sparky;1
+83;Flameo;0
+83;Dylan;0
+83;Fuego;0
+84;Mid-American Conference;0
+84;Ohio Valley Conference;0
+84;Horizon League;1
+84;Big Sky Conference;0
+85;1965;0
+85;1982;1
+85;1913;0
+85;1946;0
+86;University of Illinois at Chicago;1
+86;University of Chicago;0
+86;DePaul University;0
+86;Loyal University Chicago;0
+87;In honor of US naval veterans;1
+87;It used to be a US Navy training center;0
+87;It used to be a naval base;0
+87;It's architect was a formal naval officer;0
+88;1893;0
+88;1910;0
+88;1920;0
+88;1916;1
+89;To serve as a naval base;0
+89;To serve as a dock and to host recreational activities;1
+89;To be a 'Chicago World's Fair' exhibit;0
+89;As an amusement park;0
+90;2 million;1
+90;3 million;0
+90;5 million;0
+90;8 million;0
+91;About 1.2 million;0
+91;About 1.4 million;0
+91;About 1.3 million;1
+91;About 1.1 million;0
+92;About 3000 years old;0
+92;Over 9000! years old;0
+92;About 4000 years old;0
+92;About 5000 years old;1
+93;It was once a dragon's nest;0
+93;It is a landing site for aliens;1
+93;It is placed by giants to mark their territory;0
+93;It is to give user magical powers;0
+94;53;0
+94;33;0
+94;73;0
+94;93;1
+95;30 feet;1
+95;50 feet;0
+95;65 feet;0
+95;40 feet;0
+96;956 square miles;0
+96;1,125 square miles;0
+96;1,583 square miles;1
+96;1,787 square miles;0
+97;May 11, 1910;1
+97;May 11, 1985;0
+97;May 11, 1934;0
+97;May 11, 1945;0
+98;Spiritual Park;0
+98;Backbone of the world;1
+98;Heart of the world;0
+98;Warrior's playground;0
+99;Glaciers will be completely gone by year 2100;1
+99;Glaciers are melting due to climate change;0
+99;More likelihood of wildfires and destroying natural habitats;0
+99;Introduction of invasive, nonative species;0
+100;less than 30;1
+100;0;0
+100;about 90;0
+100;more than 200;0
+101;1600 miles;0
+101;1500 miles;0
+101;1200 miles;0
+101;1400 miles;1
+102;Timor Sea;0
+102;Coral Sea;1
+102;Arafura Sea;0
+102;Kara Sea;0
+103;Above 150 meters of depth;1
+103;Below 150 meter of depth;0
+103;Above 80 meters of depth;0
+103;Below 80 meters of depth;0
+104;The reef has not been dying;0
+104;Climate Change;1
+104;Contamination;0
+104;Human invasion;0
+105;Around $2 billion Australian dollars;0
+105;Around $3 billion Australian dollars;1
+105;Around $300 million Australian dollars;0
+105;Around $500 million Australian dollars;0
+106;Great Coral Reef;0
+106;The Gili islands;0
+106;Wakatobi Regency;0
+106;Coral Triangle;1
+107;50%;0
+107;95%;0
+107;75%;1
+107;10%;0
+108;Cristobal Columbus;0
+108;Hernan Cortez;0
+108;Jorge de Menezes;1
+108;Juan Ponce de Leon;0
+109;From Roman mythology;0
+109;From Greek mythology;0
+109;From Egyptian mythology;0
+109;From Local mythology;1
+110;Diverse nature;0
+110;Four kings;1
+110;The Forgotten Land;0
+110;Lost Kingdom;0

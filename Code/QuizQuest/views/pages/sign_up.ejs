@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <%- include("../components/head.ejs"); %>
+</head>
+
+<link href="../../assets/css/sign_up.css" rel="stylesheet">
+
+<style>
+    #compass-logo {
+        -webkit-filter: invert(100%); /* safari 6.0 - 9.0 */
+        filter: invert(100%);
+    }
+
+    .bd-placeholder-img {
+        font-size: 1.125rem;
+        text-anchor: middle;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+    }
+
+    @media (min-width: 768px) {
+        .bd-placeholder-img-lg {
+            font-size: 3.5rem;
+        }
+    }
+</style>
+
+<body>
+
+    <%- include("../components/navbar.ejs"); %>
+
+    <main role="main" class="container text-center">
+        <!-- If needed, render errors in account creation -->
+        <% if (locals.errors) { %>
+            <% errors.forEach((error) => { %>
+                <div class="alert alert-danger" role="alert">
+                    <%= error.msg %>
+                </div>
+            <% }) %>
+        <%}%>
+
+        <div class="jumbotron bg-dark text-light shadow">
+            <form class="form-signin" action="/user/create" method="POST">
+                <img id="compass-logo" class="mb-4" alt="compass logo" height="72" width="72" src="../../assets/svg/compass.svg">
+
+                <h1 class="h3 mb-3 font-weight-normal">
+                    Sign up
+                </h1>
+
+                <label class="sr-only" for="signUpUsername">Username</label>
+                <input autofocus="" class="form-control" id="signUpUsername" placeholder="Username" name="username" required="" type="text">
+
+                <label class="sr-only" for="signUpPassword">Password</label>
+                <input class="form-control mt-3 mb-0 rounded-top" id="signUpPassword" placeholder="Password" required="" name="password" type="password">
+
+                <label class="sr-only" for="confirmPassword">Password Match</label>
+                <input class="form-control rounded-bottom mt-0 mb-4" id="confirmPassword" placeholder="Confirm password" required="" name="password_match" type="password">
+
+                <button class="btn btn-lg btn-primary btn-block" type="submit">
+                    Create Account
+                </button>
+
+                <p class="mt-3 mb-3">
+                    Already have an account? Sign-in <a href="/sign_in">here</a>
+                </p>
+            </form>
+        </div>
+    </main>
+
+    <%- include("../components/footer.ejs"); %>
+
+</body>
+
+</html>
